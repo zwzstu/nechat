@@ -18,9 +18,11 @@ export const POST = async (req: NextRequest) => {
   const headers = new Headers();
   headers.set("Authorization", `Bearer ${randomKey}`);
 
+  const body = await req.json();
+
   return fetch(url, {
     method: req.method,
     headers,
-    body: req.body,
+    body,
   });
 };

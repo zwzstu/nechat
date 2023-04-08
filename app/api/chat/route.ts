@@ -1,4 +1,5 @@
 import { get } from '@vercel/edge-config';
+import { log } from 'console';
 import { NextRequest, NextResponse } from "next/server";
 
 export const runtime: string = "edge";
@@ -20,9 +21,17 @@ export const POST = async (req: NextRequest) => {
 
   const body = await req.json();
 
-  return fetch(url, {
-    method: req.method,
-    headers,
-    body,
-  });
+  try {
+    const response = await fetch(url, {
+      method: "POST",
+      headers,
+      body,
+    });
+
+    return response;
+  } 
+  catch (error) {
+    log(error);
+    return NextResponse.json(error);
+  }
 };

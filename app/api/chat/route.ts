@@ -16,7 +16,7 @@ export const POST = async (req: NextRequest) => {
   const randomKey = keys[Math.floor(Math.random() * keys.length)];
 
   const headers = new Headers();
-  headers.set("Authentication", `Bearer ${randomKey}`);
+  headers.set("Authorization", `Bearer ${randomKey}`);
 
   return fetch(url, {
     method: req.method,

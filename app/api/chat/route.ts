@@ -1,8 +1,10 @@
 import { get } from '@vercel/edge-config';
 import { NextRequest, NextResponse } from "next/server";
 
-export const runtime: string = "experimental-edge";
-export const regions: string = "sfo1";
+export const config = {
+  runtime: "edge",
+  regions: "sfo1"
+}
 
 export const GET = async (req: NextRequest) => {
   const greeting = await get('greeting');

@@ -3,7 +3,6 @@ import { NextRequest, NextResponse } from "next/server";
 
 export const config = {
   runtime: "edge",
-  regions: "sfo1"
 }
 
 export const GET = async (req: NextRequest) => {

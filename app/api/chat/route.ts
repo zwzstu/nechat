@@ -24,6 +24,6 @@ export const POST = async (req: NextRequest) => {
   return fetch(url, {
     method: "POST",
     headers,
-    body,
+    body: JSON.stringify(body),
   })
 };

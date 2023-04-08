@@ -18,19 +18,6 @@ export const POST = async (req: NextRequest) => {
   const headers = new Headers();
   headers.set("Authorization", `Bearer ${randomKey}`);
 
-  const body = await req.json();
-  console.log(body);
-
-  try {
-    const response = await fetch(url, {
-      method: "POST",
-      headers,
-      body,
-    });
-
-    return response;
-  } 
-  catch (error) {
-    return NextResponse.json(error);
-  }
+  const res = await req.json();
+  return NextResponse.json(res);
 };

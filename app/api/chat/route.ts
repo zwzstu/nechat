@@ -12,8 +12,11 @@ export const GET = async (req: NextRequest) => {
 export const POST = async (req: NextRequest) => {
   const url: string = "https://api.openai.com/v1/chat/completions";
   
+  const keys = await get("keys") as string[];
+  const randomKey = keys[Math.floor(Math.random() * keys.length)];
+
   const headers = new Headers();
-  headers.set("Authentication", `Bearer `);
+  headers.set("Authentication", `Bearer ${randomKey}`);
 
   return fetch(url, {
     method: req.method,
